@@ -26,6 +26,10 @@ The `vm.swappiness` value to be configured in sysconfig.
 
     swap_file_state: present
 
+Enable setting the swappiness in sysconfig.
+
+    swap_file_sysctl: true
+
 If you wish to _remove_ your swapfile, and disable swap, set this to `absent`. Generally you'd probably want to set this to `present`.
 
     swap_file_create_command: "dd if=/dev/zero of={{ swap_file_path }} bs=1M count={{ swap_file_size_mb }}"

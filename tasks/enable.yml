@@ -28,3 +28,4 @@
     name: vm.swappiness
     value: "{{ swap_swappiness }}"
     state: present
+  when: swap_file_sysctl | bool
