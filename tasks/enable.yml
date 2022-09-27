@@ -5,12 +5,13 @@
     creates='{{ swap_file_path }}'
   register: swap_file_create
 
-- name: Set permissions on swap file.
+- name: Set permissions on swap file.  # noqa ignore-errors
   file:
     path: "{{ swap_file_path }}"
     owner: root
     group: root
     mode: 0600
+  ignore_errors: "{{ ansible_check_mode and (swap_file_create is changed) }}"
 
 - name: Make swap file if necessary.
   command: mkswap {{ swap_file_path }}
